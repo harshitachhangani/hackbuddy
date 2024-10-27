@@ -1,0 +1,69 @@
+flowchart TB
+    subgraph Client["Client Layer"]
+        UI["Web UI (Next.js)"]
+        Mobile["Mobile App"]
+    end
+
+    subgraph API_Gateway["API Gateway Layer"]
+        Gateway["Kong API Gateway"]
+        Auth["Auth Service"]
+        Rate["Rate Limiter"]
+    end
+
+    subgraph App_Services["Application Services"]
+        direction TB
+        UserService["User Service"]
+        TeamService["Team Service"]
+        HackathonService["Hackathon Service"]
+        RecommendationService["Recommendation Service"]
+        ChatService["Chat Service"]
+        NotificationService["Notification Service"]
+    end
+
+    subgraph ML_Services["ML Services Layer"]
+        SkillAnalysis["Skill Analysis Engine"]
+        TeamMatcher["Team Matching Engine"]
+        UserProfiling["User Profiling Engine"]
+    end
+
+    subgraph Data_Layer["Data Layer"]
+        direction TB
+        MongoDB[(MongoDB)]
+        Redis[(Redis Cache)]
+        Elasticsearch[(Elasticsearch)]
+        Neo4j[(Neo4j Graph DB)]
+        S3["AWS S3"]
+    end
+
+    subgraph External["External Services"]
+        GitHub["GitHub API"]
+        LinkedIn["LinkedIn API"]
+        OAuth["OAuth Providers"]
+    end
+
+    Client --> API_Gateway
+    API_Gateway --> App_Services
+    App_Services --> ML_Services
+    App_Services --> Data_Layer
+    ML_Services --> Data_Layer
+    App_Services --> External
+
+    %% Service Connections
+    UserService --> MongoDB
+    TeamService --> MongoDB
+    HackathonService --> MongoDB
+    RecommendationService --> Elasticsearch
+    ChatService --> Redis
+    
+    %% ML Service Connections
+    SkillAnalysis --> Neo4j
+    TeamMatcher --> Elasticsearch
+    UserProfiling --> MongoDB
+
+    %% Cache Layer
+    App_Services --> Redis
+    ML_Services --> Redis
+
+    %% File Storage
+    UserService --> S3
+    TeamService --> S3

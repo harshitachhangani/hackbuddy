@@ -1,0 +1,91 @@
+flowchart TB
+    subgraph Input["Input Layer"]
+        direction LR
+        UserProfile["User Profile Data"]
+        ProjectReq["Project Requirements"]
+        TeamData["Existing Team Data"]
+        HistoricalData["Historical Performance"]
+    end
+
+    subgraph Processing["Processing Layer"]
+        direction TB
+        subgraph DataPrep["Data Preparation"]
+            FeatureEng["Feature Engineering"]
+            DataClean["Data Cleaning"]
+            Normalization["Data Normalization"]
+        end
+
+        subgraph Analysis["Analysis Engines"]
+            SkillEngine["Skill Analysis Engine"]
+            ExpEngine["Experience Analysis"]
+            CollabEngine["Collaboration Analysis"]
+            PerformanceEngine["Performance Analysis"]
+        end
+
+        subgraph ML_Models["ML Models"]
+            BERT["BERT NLP Model"]
+            GNN["Graph Neural Network"]
+            XGBoost["XGBoost Ranker"]
+            DNN["Deep Neural Network"]
+        end
+    end
+
+    subgraph Scoring["Scoring System"]
+        direction TB
+        SkillScore["Skill Compatibility (30%)"]
+        TechScore["Technical Expertise (20%)"]
+        ExpScore["Experience Score (15%)"]
+        CollabScore["Collaboration Score (15%)"]
+        RatingScore["User Rating Score (10%)"]
+        RoleScore["Role Match Score (5%)"]
+        SuccessScore["Success Rate Score (5%)"]
+    end
+
+    subgraph Output["Output Layer"]
+        FinalScore["Final Compatibility Score"]
+        Rankings["Candidate Rankings"]
+        Insights["Match Insights"]
+        Recommendations["Team Recommendations"]
+    end
+
+    %% Connections
+    Input --> DataPrep
+    DataPrep --> Analysis
+    Analysis --> ML_Models
+    ML_Models --> Scoring
+    Scoring --> Output
+
+    %% Detailed Connections
+    UserProfile --> FeatureEng
+    ProjectReq --> FeatureEng
+    TeamData --> FeatureEng
+    HistoricalData --> FeatureEng
+
+    FeatureEng --> SkillEngine
+    FeatureEng --> ExpEngine
+    FeatureEng --> CollabEngine
+    FeatureEng --> PerformanceEngine
+
+    SkillEngine --> BERT
+    CollabEngine --> GNN
+    PerformanceEngine --> XGBoost
+    ExpEngine --> DNN
+
+    BERT --> SkillScore
+    BERT --> TechScore
+    GNN --> CollabScore
+    XGBoost --> SuccessScore
+    DNN --> ExpScore
+    DNN --> RoleScore
+
+    SkillScore --> FinalScore
+    TechScore --> FinalScore
+    ExpScore --> FinalScore
+    CollabScore --> FinalScore
+    RatingScore --> FinalScore
+    RoleScore --> FinalScore
+    SuccessScore --> FinalScore
+
+    FinalScore --> Rankings
+    Rankings --> Recommendations
+    Rankings --> Insights

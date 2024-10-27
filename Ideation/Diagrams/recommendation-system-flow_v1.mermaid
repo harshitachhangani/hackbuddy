@@ -1,0 +1,34 @@
+flowchart TD
+    subgraph Input
+        A[Problem Statement] --> B[NLP Preprocessing]
+        B --> C[Skills Extraction Model]
+    end
+
+    subgraph SkillAnalysis
+        C --> D[Required Skills Vector]
+        D --> E[Technology Stack Identification]
+        D --> F[Project Complexity Assessment]
+    end
+
+    subgraph UserProfiling
+        G[User Profile Data] --> H[Feature Engineering]
+        H --> I[User Embedding Generation]
+    end
+
+    subgraph MatchingEngine
+        D --> J[Skill Compatibility Score]
+        I --> J
+        J --> K[Team Chemistry Predictor]
+        K --> L[Final Ranking Model]
+    end
+
+    subgraph RecommendationOutput
+        L --> M[Ranked Team Suggestions]
+        M --> N[Team Configuration Options]
+    end
+
+    subgraph FeedbackLoop
+        N --> O[Team Performance Tracking]
+        O --> P[Model Retraining]
+        P --> J
+    end
