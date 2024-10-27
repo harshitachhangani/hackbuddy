@@ -1,6 +1,6 @@
 # Teammate Recommendation System: Factor Analysis & Scoring
 
-## 1. Detailed Factor Analysis
+## 1. Detailed Factor Analysis for Recommendation
 
 ### 1.1 Skill Compatibility (Weight: 30%)
 

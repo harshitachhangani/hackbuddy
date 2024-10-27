@@ -37,31 +37,10 @@
    - Code complexity metrics
    - Documentation quality
 
-#### Behavioral & Soft Skills
-1. **Collaboration Metrics**
-   - Previous team performance
-   - Communication style analysis
-   - Leadership capability score
-   - Conflict resolution history
-
-2. **Project Management Skills**
-   - Timeline adherence history
-   - Task completion rate
-   - Documentation thoroughness
-   - Project organization skills
-
 #### Performance Indicators
 1. **Hackathon History**
    - Past project success rates
    - Role performance ratings
-   - Innovation scores
-   - Implementation speed
-
-2. **Learning Agility**
-   - Skill acquisition rate
-   - Technology adaptation speed
-   - Problem-solving efficiency
-   - Knowledge sharing ability
 
 ## 2. Machine Learning Models & Algorithms
 
